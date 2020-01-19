@@ -1,7 +1,7 @@
 <?php
 class Order{
     private $conn;
-    private $table_name = 'baby_store.order';
+    private $table_name = 'heroku_1ace2ff26d7733b.order';
 
     public $idOrder;
     public $totalPrice;

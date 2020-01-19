@@ -19,6 +19,8 @@ class Product{
     public $image3;
     public $Category_idCategory;
     public $User_idUser;
+
+   
  
     //Consctructor Base de donnees.
     public function __construct($db){
@@ -36,6 +38,7 @@ class Product{
         return $stmt;
     }
 
+
     ///////// Create un produit
     function create(){
         $query = "INSERT INTO
@@ -43,6 +46,7 @@ class Product{
                 quantity=:quantity, type=:type, description=:description, image=:image, 
                 image2=:image2, image3=:image3, Category_idCategory=:Category_idCategory, 
                 User_idUser=:User_idUser";
+
 
         $stmt = $this->conn->prepare($query);
         $this->prodName=htmlspecialchars(strip_tags($this->prodName));
