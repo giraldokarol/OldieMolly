@@ -1,1 +1,1 @@
-web: vendor/bin/heroku-php-apache2 Oldie_Molly/
+web: vendor/bin/heroku-php-apache2 
