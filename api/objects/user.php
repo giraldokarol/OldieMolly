@@ -75,7 +75,7 @@
         }
 
         function readOrder(){
-            $query = "SELECT * FROM user AS u INNER JOIN baby_store.order AS o INNER JOIN product AS p
+            $query = "SELECT * FROM user AS u INNER JOIN order AS o INNER JOIN product AS p
             ON u.idUser=o.User_idUser AND o.Product_idProduct=p.idProduct AND u.idUser=?";
             $stmt= $this->conn->prepare($query);
             $stmt->bindParam(1, $this->idUser);
