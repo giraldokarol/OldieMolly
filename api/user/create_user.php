@@ -13,8 +13,7 @@
 
     $user = new User($db);
     $data = json_decode(file_get_contents("php://input"));
-
-    
+   
 
     if(!empty($data->email) && !empty($data->userName) && !empty($data->password)
         && !empty($data->userLastname) && !empty($data->address)){
