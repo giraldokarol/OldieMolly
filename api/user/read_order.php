@@ -12,7 +12,7 @@
     $db = $database->getConnection();
 
     $user= new User($db);
-    $user->idUser= isset($_GET['idUser']) ? $_GET['idUser']:die();
+    $user->idUser= isset($_GET['email']) ? $_GET['email']:die();
     $stmt= $user->readOrder();
     $num=$stmt->rowCount();
 

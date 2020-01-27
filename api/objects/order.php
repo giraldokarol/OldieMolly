@@ -6,6 +6,7 @@ class Order{
     public $idOrder;
     public $totalPrice;
     public $date;
+    public $buyer;
     public $User_idUser;
     public $Product_idProduct;
 
@@ -16,15 +17,17 @@ class Order{
     function create(){
         $query = "INSERT INTO 
                 " . $this->table_name . " SET totalPrice=:totalPrice, date=CURRENT_TIMESTAMP(),
-                User_idUser=:User_idUser, Product_idProduct=:Product_idProduct";
+                User_idUser=:User_idUser, Product_idProduct=:Product_idProduct, buyer=:buyer";
         $stmt = $this->conn->prepare($query);
         $this->totalPrice=htmlspecialchars(strip_tags($this->totalPrice));
         $this->User_idUser=htmlspecialchars(strip_tags($this->User_idUser));
         $this->Product_idProduct=htmlspecialchars(strip_tags($this->Product_idProduct));
+        $this->buyer=htmlspecialchars(strip_tags($this->buyer));
 
         $stmt->bindParam(":totalPrice", $this->totalPrice);
         $stmt->bindParam(":User_idUser" , $this->User_idUser);
         $stmt->bindParam(":Product_idProduct", $this->Product_idProduct);
+        $stmt->bindParam(":buyer", $this->buyer);
 
         if($stmt->execute()){
             return true;
