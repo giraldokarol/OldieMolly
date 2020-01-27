@@ -26,7 +26,8 @@
                 "totalPrice" => $totalPrice,
                 "date" => $date,
                 "Product_idProduct" => $Product_idProduct,
-                "prodName" => $prodName
+                "prodName" => $prodName,
+                "idCategory" => $idCategory
             );
             array_push($arr, $user_order);
         }
