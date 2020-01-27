@@ -27,7 +27,8 @@
                 "date" => $date,
                 "Product_idProduct" => $Product_idProduct,
                 "prodName" => $prodName,
-                "idCategory" => $idCategory
+                "idCategory" => $idCategory,
+                "nameProd" => $nameProd
             );
             array_push($arr, $user_order);
         }
