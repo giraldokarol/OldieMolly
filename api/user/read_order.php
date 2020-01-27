@@ -28,7 +28,8 @@
                 "Product_idProduct" => $Product_idProduct,
                 "prodName" => $prodName,
                 "idCategory" => $idCategory,
-                "nameProd" => $nameProd
+                "nameProd" => $nameProd,
+                "buyer" => $buyer
             );
             array_push($arr, $user_order);
         }
