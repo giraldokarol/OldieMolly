@@ -21,6 +21,7 @@
         while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
             $user_order=array(
+                "idOrder" => $idOrder,
                 "userName" => $userName,
                 "email" => $email,
                 "totalPrice" => $totalPrice,
