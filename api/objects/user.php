@@ -78,7 +78,7 @@
             $query = "SELECT * FROM user AS u INNER JOIN heroku_1ace2ff26d7733b.order AS o INNER JOIN product AS p
             ON u.idUser=o.User_idUser AND o.Product_idProduct=p.idProduct AND u.email=?";
             $stmt= $this->conn->prepare($query);
-            $stmt->bindParam(1, $this->idUser);
+            $stmt->bindParam(1, $this->email);
             $stmt->execute();
             return $stmt;
         }

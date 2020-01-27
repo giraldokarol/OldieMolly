@@ -52,6 +52,15 @@ class Order{
         }
         return false;
     }
+
+    function readBuyer(){
+        $query="SELECT * FROM " .$this->table_name. " AS o WHERE o.buyer=?";
+        $stmt= $this->conn->prepare($query);
+        $stmt->buyer=htmlspecialchars(strip_tags($this->buyer));
+        $stmt->bindParam(1, $this->buyer);
+        $stmt->execute();
+        return $stmt;
+    }
     
 }
 ?>
