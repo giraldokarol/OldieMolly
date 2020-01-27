@@ -26,5 +26,16 @@ class Category{
         $stmt->execute();
         return $stmt;      
     }
+
+    function readCategory(){
+        $query = "SELECT * FROM " . $this->table_name . " AS c WHERE c.idCategory=?";
+        $stmt=$this->conn->prepare($query);
+        $stmt->bindParam(1, $this->idCategory);
+        $stmt->execute();
+
+        $row= $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $this->nameCategory=$row['nameCategory'];
+    }
 }
 ?>
