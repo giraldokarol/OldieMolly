@@ -1,4 +1,4 @@
 <?php
-    echo '<img scr="img/Fondo_api.png"/>';
+    echo '<img src="img/Fondo_api.png"/>';
     echo 'Hola';
 ?>
