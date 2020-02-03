@@ -1,3 +1,3 @@
 <?php
-    echo "Hola";
+    echo '<img scr="img/Fondo_api.png"/>';
 ?>
