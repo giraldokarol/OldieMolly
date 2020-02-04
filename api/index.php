@@ -1,4 +1,9 @@
 <?php
-    echo '<img src="img/Fondo_api.png"/>';
+    echo '<style>   
+        .back{
+            background-color:red;
+        }
+    </style>';
+    echo '<div class="back"></div>';
    
 ?>
