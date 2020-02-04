@@ -1,15 +1,21 @@
 <html>
     <head>
-        <title>API - Oldie Molly</title>
+        <title>API-Oldie Molly</title>
         <style type="text/css"> 
             .back{
-                background-color: red;
+                margin: 0;
+                padding: 0;
+                background-image: url('img/Fondo_api.png');
+                background-size: cover;
+                background-position-x: center;
+                width: 100%;
+                height: 100vh;
             }
         </style>
     </head>
     <body>
         <?php
-        echo '<div class="back">Hola</div>';
+        echo '<div class="back"></div>';
        ?>
     </body>
 </html>
