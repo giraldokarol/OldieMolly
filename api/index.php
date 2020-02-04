@@ -9,7 +9,7 @@
     </head>
     <body>
         <?php
-        echo '<div class="back"></div>';
+        echo '<div class="back">Hola</div>';
        ?>
     </body>
 </html>
