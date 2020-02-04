@@ -1,9 +1,18 @@
-<?php
-    echo '<style>   
-        .back{
-            background-color:red;
-        }
-    </style>';
-    echo '<div class="back"></div>';
-   
-?>
+<html>
+    <head>
+        <title>API - Oldie Molly</title>
+        <style type="text/css"> 
+            .back{
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <?php
+        echo '<div class="back"></div>';
+       ?>
+    </body>
+</html>
+
+
+
