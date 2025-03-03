@@ -18,7 +18,7 @@
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
             $category_item= array(
-                "idCategory" => $idCategory,
+                "id" => $id,
                 "nameCategory" => $nameCategory
             );
             array_push($category_arr, $category_item);

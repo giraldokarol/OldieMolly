@@ -19,8 +19,8 @@
 
     if(!empty($data->prodName) && !empty($data->price) && !empty($data->quantity) &&
         !empty($data->type) && !empty($data->description) && !empty($data->image) &&
-        !empty($data->image2) && !empty($data->image3) && !empty($data->Category_idCategory) &&
-        !empty($data->User_idUser)){
+        !empty($data->image2) && !empty($data->image3) && !empty($data->idCategory) &&
+        !empty($data->idUser)){
      
         // set product property values
         $product->prodName = $data->prodName;
@@ -31,8 +31,8 @@
         $product->image = $data->image;
         $product->image2 = $data->image2;
         $product->image3 = $data->image3;
-        $product->Category_idCategory = $data->Category_idCategory;
-        $product->User_idUser = $data->User_idUser;
+        $product->idCategory = $data->idCategory;
+        $product->idUser = $data->idUser;
 
         if($product->create()){
             http_response_code(201);

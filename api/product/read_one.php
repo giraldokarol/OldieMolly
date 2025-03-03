@@ -13,14 +13,14 @@
 
     $product = new Product($db);
 
-    $product->idProduct = isset($_GET['idProduct']) ? $_GET['idProduct'] : die();
+    $product->id = isset($_GET['id']) ? $_GET['id'] : die();
 
     $product->readOne();
 
     if($product->prodName!=null){
         //Creation array
         $product_arr = array(
-            "idProduct" => $product->idProduct,
+            "id" => $product->id,
             "prodName" => $product->prodName,
             "price" => $product->price,
             "quantity" => $product->quantity,
@@ -29,8 +29,8 @@
             "image" => $product->image,
             "image2" => $product->image2,
             "image3" => $product->image3,
-            "Category_idCategory" => $product->Category_idCategory,
-            "User_idUser" => $product->User_idUser
+            "idCategory" => $product->idCategory,
+            "idUser" => $product->idUser
         );
         //Bonne reponse OK
         http_response_code(200);

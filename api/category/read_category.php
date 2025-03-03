@@ -12,7 +12,7 @@
      $db = $database->getConnection();
 
      $category= new Category($db);
-     $category->idCategory = isset($_GET['idCategory'])? $_GET['idCategory'] :die();
+     $category->id = isset($_GET['id'])? $_GET['id'] :die();
      $category->readCategory();
 
      if($category->idCategory!=null){
