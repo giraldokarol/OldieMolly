@@ -20,7 +20,7 @@
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
             $product_item=array(
-                "idProduct" => $idProduct,
+                "id" => $id,
                 "prodName" => $prodName,
                 "price" => $price,
                 "quantity" => $quantity,
@@ -29,8 +29,8 @@
                 "image" => $image,
                 "image2" => $image2,
                 "image3" => $image3,
-                "Category_idCategory" => $Category_idCategory,
-                "User_idUser" => $User_idUser
+                "idCategory" => $idCategory,
+                "idUser" => $idUser
             );
     
             array_push($products_arr, $product_item);

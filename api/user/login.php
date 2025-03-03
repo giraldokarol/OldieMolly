@@ -32,7 +32,7 @@
             "iat" => $iat,
             "nbf" => $nbf,
             "data" => array(
-                "idUser" => $user->idUser,
+                "id" => $user->id,
                 "email" => $user->email,
                 "userName" => $user->userName,
                 "userLastname" => $user->userLastname,

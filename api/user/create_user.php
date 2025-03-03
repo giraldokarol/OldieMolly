@@ -17,14 +17,16 @@
 
     if(!empty($data->email) && !empty($data->userName) && !empty($data->password)
         && !empty($data->userLastname) && !empty($data->address)){
-            $user->email = $data->email;
-            $user->userName = $data->userName;
-            $user->password = $data->password;
-            $user->userLastname = $data->userLastname;
-            $user->address = $data->address;
+
+            // Asignar los valores al objeto $user
+            $user->email = htmlspecialchars(strip_tags($data->email));
+            $user->userName = htmlspecialchars(strip_tags($data->userName));
+            $user->password = htmlspecialchars(strip_tags($data->password));
+            $user->userLastname = htmlspecialchars(strip_tags($data->userLastname));
+            $user->address = htmlspecialchars(strip_tags($data->address));
 
             if($user->create()){
-                http_response_code(200);
+                http_response_code(201);
                 echo json_encode(array("message" => "User created"));
             }else{
                 http_response_code(503);

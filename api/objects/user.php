@@ -3,7 +3,7 @@
         private $conn;
         private $table_name = "user";
 
-        public $idUser;
+        public $id;
         public $email;
         public $userName;
         public $password;
@@ -15,8 +15,7 @@
         }
 
         function create(){
-            $query = "INSERT INTO " . $this->table_name . "
-            SET
+            $query = "INSERT INTO " . $this->table_name . "SET
                 email = :email,
                 userName = :userName,
                 password = :password,
@@ -55,7 +54,7 @@
 
             if($num>0){
                 $row=$stmt->fetch(PDO::FETCH_ASSOC);
-                $this->idUser = $row['idUser'];
+                $this->id = $row['id'];
                 $this->userName = $row['userName'];
                 $this->password = $row['password'];
                 $this->userLastname = $row['userLastname'];
@@ -67,16 +66,15 @@
         }
 
         function readOne(){
-            $query = "SELECT * FROM user AS u INNER JOIN product AS p ON u.idUser=p.User_idUser AND u.idUser=?";
+            $query = "SELECT * FROM user AS u INNER JOIN product AS p ON u.id=p.idUser AND u.id=?";
             $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(1, $this->idUser);
+            $stmt->bindParam(1, $this->id);
             $stmt->execute();
             return $stmt;
         }
 
         function readOrder(){
-            $query = "SELECT * FROM user AS u INNER JOIN `order` AS o INNER JOIN product AS p
-            ON u.idUser=o.User_idUser AND o.Product_idProduct=p.idProduct AND u.email=?";
+            $query = "SELECT * FROM user AS u INNER JOIN `Orders` AS o INNER JOIN product AS p ON u.id=o.idUser AND o.idProduct=p.id AND u.email=?";
             $stmt= $this->conn->prepare($query);
             $stmt->email=htmlspecialchars(strip_tags($this->email));
             $stmt->bindParam(1, $this->email);
@@ -90,8 +88,5 @@
             $stmt->execute();
             return $stmt;
         }
-
-
-
     }
 ?>

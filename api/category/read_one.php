@@ -16,7 +16,7 @@
     $category = new Category($db);
     $product = new Product($db);
 
-    $category->idCategory = isset($_GET['idCategory']) ? $_GET['idCategory'] : die();
+    $category->id = isset($_GET['id']) ? $_GET['id'] : die();
    
 
     $stmt = $category->readOne();
@@ -27,7 +27,7 @@
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
             $products_arr=array(
-                "idProduct" => $idProduct,
+                "idProduct" => $id,
                 "prodName" => $prodName,
                 "price" => $price,
                 "quantity" => $quantity,
@@ -36,8 +36,8 @@
                 "image" => $image,
                 "image2" => $image2,
                 "image3" => $image3,
-                "Category_idCategory" => $Category_idCategory,
-                "User_idUser" => $User_idUser,
+                "idCategory" => $idCategory,
+                "idUser" => $idUser,
                 "nameCategory" => $nameCategory
             );
             array_push($arr, $products_arr);   

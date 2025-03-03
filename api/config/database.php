@@ -2,10 +2,10 @@
 class Database{
  
     // specify your own database credentials
-    private $host = "eu-cdbr-west-02.cleardb.net"; //"localhost"
-    private $db_name = "heroku_1ace2ff26d7733b"; // "baby_store" localhost
-    private $username = "b85f4b12d27bbe"; // "root" localhost
-    private $password = "27520628"; // "" localhost
+    private $host = "localhost"; //"localhost"
+    private $db_name = "kargir6_baby_store"; // "baby_store" localhost
+    private $username = "kargir6_baby_store"; // "root" localhost
+    private $password = "Afrika2101!"; // "" localhost
     public $conn;
  
     // get the database connection

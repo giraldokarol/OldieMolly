@@ -19,12 +19,12 @@
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
             $buyer_order=array(
-                "idOrder" => $idOrder,
+                "id" => $id,
                 "totalPrice" => $totalPrice,
                 "date" => $date,
-                "Product_idProduct" => $Product_idProduct,
+                "idProduct" => $idProduct,
                 "idCategory" => $idCategory,
-                "nameProd" => $nameProd,
+                "prodName" => $prodName,
                 "buyer" => $buyer
             );
             array_push($arr, $buyer_order);

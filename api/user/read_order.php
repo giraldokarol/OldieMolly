@@ -21,15 +21,15 @@
         while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
             $user_order=array(
-                "idOrder" => $idOrder,
+                "id" => $id,
                 "userName" => $userName,
                 "email" => $email,
                 "totalPrice" => $totalPrice,
                 "date" => $date,
-                "Product_idProduct" => $Product_idProduct,
+                "idProduct" => $idProduct,
                 "prodName" => $prodName,
                 "idCategory" => $idCategory,
-                "nameProd" => $nameProd,
+                "prodName" => $prodName,
                 "buyer" => $buyer
             );
             array_push($arr, $user_order);

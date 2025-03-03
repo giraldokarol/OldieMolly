@@ -8,7 +8,7 @@ class Product{
     
 
    //Objet propietes.
-    public $idProduct;
+    public $id;
     public $prodName;
     public $price;
     public $quantity;
@@ -17,8 +17,8 @@ class Product{
     public $image;
     public $image2;
     public $image3;
-    public $Category_idCategory;
-    public $User_idUser;
+    public $idCategory;
+    public $idUser;
 
    
  
@@ -42,10 +42,17 @@ class Product{
     ///////// Create un produit
     function create(){
         $query = "INSERT INTO
-                " . $this->table_name . " SET prodName=:prodName, price=:price, 
-                quantity=:quantity, type=:type, description=:description, image=:image, 
-                image2=:image2, image3=:image3, Category_idCategory=:Category_idCategory, 
-                User_idUser=:User_idUser";
+                " . $this->table_name . " SET 
+                prodName=:prodName, 
+                price=:price, 
+                quantity=:quantity, 
+                type=:type, 
+                description=:description, 
+                image=:image, 
+                image2=:image2, 
+                image3=:image3, 
+                idCategory=:idCategory, 
+                idUser=:idUser";
 
 
         $stmt = $this->conn->prepare($query);
@@ -57,8 +64,8 @@ class Product{
         $this->image=htmlspecialchars(strip_tags($this->image));
         $this->image2=htmlspecialchars(strip_tags($this->image2));
         $this->image3=htmlspecialchars(strip_tags($this->image3));
-        $this->Category_idCategory=htmlspecialchars(strip_tags($this->Category_idCategory));
-        $this->User_idUser=htmlspecialchars(strip_tags($this->User_idUser));
+        $this->idCategory=htmlspecialchars(strip_tags($this->idCategory));
+        $this->idUser=htmlspecialchars(strip_tags($this->idUser));
 
         $stmt->bindParam(":prodName", $this->prodName);
         $stmt->bindParam(":price", $this->price);
@@ -68,8 +75,8 @@ class Product{
         $stmt->bindParam(":image", $this->image);
         $stmt->bindParam(":image2", $this->image2);
         $stmt->bindParam(":image3", $this->image3);
-        $stmt->bindParam(":Category_idCategory", $this->Category_idCategory);
-        $stmt->bindParam(":User_idUser", $this->User_idUser);
+        $stmt->bindParam(":idCategory", $this->idCategory);
+        $stmt->bindParam(":idUser", $this->idUser);
 
         if($stmt->execute()){
             return true;
@@ -81,14 +88,13 @@ class Product{
 
     //////Lire un seul produit
     function readOne(){
-        $query = "SELECT * FROM " . $this->table_name . " AS p WHERE p.idProduct = ?";
+        $query = "SELECT * FROM " . $this->table_name . " AS p WHERE p.id = ?";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $this->idProduct);
+        $stmt->bindParam(1, $this->id);
         $stmt->execute();
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
         $this->prodName = $row['prodName'];
         $this->price = $row['price'];
         $this->quantity = $row['quantity'];
@@ -97,21 +103,21 @@ class Product{
         $this->image = $row['image'];
         $this->image2 = $row['image2'];
         $this->image3 = $row['image3'];
-        $this->Category_idCategory = $row['Category_idCategory'];
-        $this->User_idUser = $row['User_idUser'];
+        $this->Category_idCategory = $row['idCategory'];
+        $this->User_idUser = $row['idUser'];
 
     }
 
 
     //Eliminer un produit
     function delete(){ 
-        $query = "DELETE FROM " . $this->table_name . " WHERE idProduct = ?";
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
 
         $stmt = $this->conn->prepare($query);
         // Pouvoir utiliser id avec characters specials
-        $this->idProduct=htmlspecialchars(strip_tags($this->idProduct));
+        $this->id=htmlspecialchars(strip_tags($this->id));
 
-        $stmt->bindParam(1, $this->idProduct);
+        $stmt->bindParam(1, $this->id);
 
         if($stmt->execute()){
             return true;

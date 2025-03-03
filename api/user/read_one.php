@@ -14,7 +14,7 @@
 
     $user = new User($db);
     $product = new Product($db);
-    $user->idUser = isset($_GET['idUser'])? $_GET['idUser'] :die();
+    $user->id = isset($_GET['id'])? $_GET['id'] :die();
 
     $stmt= $user->readOne();
     $num = $stmt->rowCount();
@@ -24,7 +24,7 @@
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
             $products_user =array(
-                "idProduct" => $idProduct,
+                "id" => $id,
                 "prodName" => $prodName,
                 "price" => $price,
                 "quantity" => $quantity,
@@ -33,8 +33,8 @@
                 "image" => $image,
                 "image2" => $image2,
                 "image3" => $image3,
-                "Category_idCategory" => $Category_idCategory,
-                "User_idUser" => $User_idUser,
+                "idCategory" => $idCategory,
+                "idUser" => $idUser,
                 "userName" => $userName,
                 "email" => $email
             );

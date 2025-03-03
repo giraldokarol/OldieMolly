@@ -16,7 +16,7 @@
     $json= file_get_contents('php://input');
     $data = json_decode($json);
     
-    $product->idProduct = $data->idProduct;
+    $product->id = $data->id;
 
     if($product->delete()){
         http_response_code(200);

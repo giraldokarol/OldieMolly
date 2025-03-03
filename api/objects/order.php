@@ -1,16 +1,16 @@
 <?php
 class Order{
     private $conn;
-    private $table_name = 'heroku_1ace2ff26d7733b.order';
+    private $table_name = 'Orders';
 
-    public $idOrder;
+    public $id;
     public $totalPrice;
     public $date;
     public $buyer;
     public $idCategory;
-    public $User_idUser;
-    public $Product_idProduct;
-    public $nameProd;
+    public $idUser;
+    public $idProduct;
+    public $prodName;
 
     public function __construct($db){
         $this->conn = $db;
@@ -18,22 +18,28 @@ class Order{
 
     function create(){
         $query = "INSERT INTO 
-                " . $this->table_name . " SET totalPrice=:totalPrice, date=CURRENT_TIMESTAMP(),
-                User_idUser=:User_idUser, Product_idProduct=:Product_idProduct, buyer=:buyer, 
-                idCategory=:idCategory, nameProd=:nameProd";
+                " . $this->table_name . " SET 
+                totalPrice=:totalPrice, 
+                date=CURRENT_TIMESTAMP(),
+                buyer=:buyer, 
+                prodName=:prodName,
+                idCategory=:idCategory,
+                idUser=:idUser, 
+                idProduct=:idProduct";
+
         $stmt = $this->conn->prepare($query);
         $this->totalPrice=htmlspecialchars(strip_tags($this->totalPrice));
-        $this->User_idUser=htmlspecialchars(strip_tags($this->User_idUser));
-        $this->Product_idProduct=htmlspecialchars(strip_tags($this->Product_idProduct));
+        $this->idUser=htmlspecialchars(strip_tags($this->idUser));
+        $this->idProduct=htmlspecialchars(strip_tags($this->idProduct));
         $this->buyer=htmlspecialchars(strip_tags($this->buyer));
-        $this->nameProd=htmlspecialchars(strip_tags($this->nameProd));
+        $this->prodName=htmlspecialchars(strip_tags($this->prodName));
 
         $stmt->bindParam(":totalPrice", $this->totalPrice);
-        $stmt->bindParam(":User_idUser" , $this->User_idUser);
-        $stmt->bindParam(":Product_idProduct", $this->Product_idProduct);
+        $stmt->bindParam(":idUser" , $this->idUser);
+        $stmt->bindParam(":idProduct", $this->idProduct);
         $stmt->bindParam(":buyer", $this->buyer);
         $stmt->bindParam(":idCategory", $this->idCategory);
-        $stmt->bindParam(":nameProd", $this->nameProd);
+        $stmt->bindParam(":prodName", $this->prodName);
 
         if($stmt->execute()){
             return true;
@@ -42,10 +48,10 @@ class Order{
     }
 
     function delete(){
-        $query="DELETE FROM " . $this->table_name . " WHERE idOrder=?";
+        $query="DELETE FROM " . $this->table_name . " WHERE id=?";
         $stmt=$this->conn->prepare($query);
-        $this->idOrder=htmlspecialchars(strip_tags($this->idOrder));
-        $stmt->bindParam(1, $this->idOrder);
+        $this->id=htmlspecialchars(strip_tags($this->id));
+        $stmt->bindParam(1, $this->id);
 
         if($stmt->execute()){
             return true;

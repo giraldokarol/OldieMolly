@@ -4,7 +4,7 @@ class Category{
     private $table_name = "category";
  
     //Objet propietes. Category
-    public $idCategory;
+    public $id;
     public $nameCategory;
 
     //Consctructor Base de donnees.
@@ -20,17 +20,17 @@ class Category{
     }
 
     function readOne(){
-        $query = "SELECT * FROM category AS c INNER JOIN product AS p ON c.idCategory = p.Category_idCategory AND c.idCategory = ?";
+        $query = "SELECT * FROM category AS c INNER JOIN product AS p ON c.id = p.idCategory AND c.id = ?";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $this->idCategory);
+        $stmt->bindParam(1, $this->id);
         $stmt->execute();
         return $stmt;      
     }
 
     function readCategory(){
-        $query = "SELECT * FROM " . $this->table_name . " AS c WHERE c.idCategory=?";
+        $query = "SELECT * FROM " . $this->table_name . " AS c WHERE c.id=?";
         $stmt=$this->conn->prepare($query);
-        $stmt->bindParam(1, $this->idCategory);
+        $stmt->bindParam(1, $this->id);
         $stmt->execute();
 
         $row= $stmt->fetch(PDO::FETCH_ASSOC);

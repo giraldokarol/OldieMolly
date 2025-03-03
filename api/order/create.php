@@ -14,13 +14,13 @@
     $order = new Order($db);
     $data = json_decode(file_get_contents("php://input"));
 
-    if(!empty($data->totalPrice) && !empty($data->User_idUser) && !empty($data->Product_idProduct) && !empty($data->buyer) && !empty($data->idCategory) && !empty($data->nameProd)){
+    if(!empty($data->totalPrice) && !empty($data->idUser) && !empty($data->idProduct) && !empty($data->buyer) && !empty($data->idCategory) && !empty($data->prodName)){
 
         $order->totalPrice = $data->totalPrice;
-        $order->User_idUser = $data->User_idUser;
-        $order->Product_idProduct = $data->Product_idProduct;
+        $order->idUser = $data->idUser;
+        $order->idProduct = $data->idProduct;
         $order->buyer = $data->buyer;
-        $order->nameProd = $data->nameProd;
+        $order->prodName = $data->prodName;
         $order->idCategory = $data->idCategory;
 
         if($order->create()){

@@ -17,7 +17,7 @@
 
  if($user->email!=null){
      $user_array=array(
-         "idUser" => $user->idUser,
+         "id" => $user->id,
          "email" =>$user->email,
          "userName" =>$user->userName,
          "password" => $user->password,
