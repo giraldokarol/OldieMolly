@@ -4,7 +4,7 @@
 Oldie Molly is a personal project designed to practice and/or learn how to build an API and integrate it into a web project using various frameworks.
 In this phase of the project, a purely **PHP-based application** is deployed, leveraging the JWT library for authentication implementation. 
 
-### :page_facing_up: Project Structue
+### :page_facing_up: Project Structure
 ```txt
 api/
 │── config/
@@ -50,4 +50,48 @@ api/
 │── index.php
 │── main.js
 
+```
+
+
+### :triangular_flag_on_post: Database structure : API calls
+**Where I can find the API :** [Base API's URL](http://oldiemolly.mooo.com/api/index.php)
+
+The following features can be proven on Postman through the url indicated.
+
+**User object features**
+**1. Account creation :** POST request.
+url : http://oldiemolly.mooo.com/api/user/create_user.php
+```json
+{
+  "email" : "",
+  "userName" : "",
+  "password" : "",
+  "userLastname" : "",
+  "address" : ""
+}
+```
+**2. Login :** POST request.
+url : http://oldiemolly.mooo.com/api/user/login.php
+```json
+{
+  "email" : "",
+  "password" : ""
+}
+```
+**3. Know products by user id :** GET request
+url: http://oldiemolly.mooo.com/api/user/read_one.php?id=3 (id="" -> you have to change it with your value)
+**4. Know orders by user email :** GET request
+url: http://oldiemolly.mooo.com/api/user/read_order.php?email=ab.es@outlook.com (email="" -> you have to change it with your value)
+
+**Order object features**
+**1. Order creation :** POST request
+url : http://oldiemolly.mooo.com/api/order/create.php
+```json
+{
+  "email" : "",
+  "userName" : "",
+  "password" : "",
+  "userLastname" : "",
+  "address" : ""
+}
 ```
