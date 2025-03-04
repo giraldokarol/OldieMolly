@@ -3,9 +3,9 @@ class Database{
  
     // specify your own database credentials
     private $host = "localhost"; //"localhost"
-    private $db_name = "kargir6_baby_store"; // "baby_store" localhost
-    private $username = "kargir6_baby_store"; // "root" localhost
-    private $password = "Afrika2101!"; // "" localhost
+    private $db_name = ""; // "baby_store" localhost
+    private $username = ""; // "root" localhost
+    private $password = ""; // "" localhost
     public $conn;
  
     // get the database connection
