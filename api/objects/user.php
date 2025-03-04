@@ -25,7 +25,6 @@
 
             $stmt->email=htmlspecialchars(strip_tags($this->email));
             $stmt->userName=htmlspecialchars(strip_tags($this->userName));
-            $stmt->password=htmlspecialchars(strip_tags($this->password));
             $stmt->userLastname=htmlspecialchars(strip_tags($this->userLastname));
             $stmt->address=htmlspecialchars(strip_tags($this->address));
 
@@ -41,14 +40,13 @@
             if($stmt->execute()){
                 return true;
             }
-            return false;
+            return false;   
         }
 
         function emailExists(){
-            $query = "SELECT * FROM " . $this->table_name . " WHERE email=?";
+            $query = "SELECT * FROM " . $this->table_name . " WHERE email = :email";
             $stmt = $this->conn->prepare($query);
-            $stmt->email=htmlspecialchars(strip_tags($this->email));
-            $stmt->bindParam(1, $this->email);
+            $stmt->bindParam(":email", $this->email);
             $stmt->execute();
             $num=$stmt->rowCount();
 

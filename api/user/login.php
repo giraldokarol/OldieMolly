@@ -14,6 +14,7 @@
     $user = new User($db);
 
     $data = json_decode(file_get_contents("php://input"));
+    
     $user->email = $data->email;
     $email_exists = $user->emailExists();
 
@@ -25,31 +26,39 @@
     include_once '../libs/php-jwt-master/src/JWT.php';
     use \Firebase\JWT\JWT;
 
-    if($email_exists && password_verify($data->password, $user->password)){
-        $token = array(
-            "iss" => $iss,
-            "aud" => $aud,
-            "iat" => $iat,
-            "nbf" => $nbf,
-            "data" => array(
-                "id" => $user->id,
-                "email" => $user->email,
-                "userName" => $user->userName,
-                "userLastname" => $user->userLastname,
-                "address" => $user->address
-            )
-        );
-        http_response_code(200);
+    if($email_exists) {
+    	$passwordIngresado = trim($data->password);
+    	$passwordHash = trim($user->password);
+    	    	
+    	if(password_verify($passwordIngresado, $passwordHash)){
+    		$token = array(
+            		"iss" => $iss,
+            		"aud" => $aud,
+            		"iat" => $iat,
+            		"nbf" => $nbf,
+            		"data" => array(
+                		"id" => $user->id,
+                		"email" => $user->email,
+                		"userName" => $user->userName,
+                		"userLastname" => $user->userLastname,
+                		"address" => $user->address
+            		)
+        	);
+        	http_response_code(200);
 
-        //Creation de jwt
-        $jwt = JWT::encode($token, $key);
-        echo json_encode(
-            array(
-                "message" => "Succefull login",
-                "jwt" => $jwt
-            )
-        );
-    }else{
+        	//Creation de jwt
+        	$jwt = JWT::encode($token, $key);
+        	echo json_encode(
+            		array(
+                		"message" => "Succefull login",
+                		"jwt" => $jwt
+            		)
+        	);
+    	}else{
+    	  echo "Password no coincide";
+    	}
+    
+    } else{
         http_response_code(401);
         echo json_encode(array("message" => "Login Failed"));
     }
