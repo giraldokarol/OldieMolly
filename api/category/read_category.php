@@ -15,7 +15,7 @@
      $category->id = isset($_GET['id'])? $_GET['id'] :die();
      $category->readCategory();
 
-     if($category->idCategory!=null){
+     if($category->nameCategory != null){
          $category_name = array(
              "nameCategory" => $category->nameCategory
          );
