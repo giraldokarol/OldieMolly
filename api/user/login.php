@@ -31,6 +31,10 @@
     include_once '../libs/php-jwt-master/src/JWT.php';
     use \Firebase\JWT\JWT;
 
+	$iat = time(); // Tiempo en que se emite el token
+    $nbf = $iat; // El tiempo mínimo en que el token es válido
+    $exp = $iat + 3600; // El token expirará después de una hora
+
     if($email_exists) {
     	$passwordIngresado = trim($data->password);
     	$passwordHash = trim($user->password);
@@ -41,6 +45,7 @@
             		"aud" => $aud,
             		"iat" => $iat,
             		"nbf" => $nbf,
+					"exp" => $exp,
             		"data" => array(
                 		"id" => $user->id,
                 		"email" => $user->email,
@@ -50,7 +55,6 @@
             		)
         	);
         	http_response_code(200);
-
         	//Creation de jwt
         	$jwt = JWT::encode($token, $key);
         	echo json_encode(
