@@ -55,6 +55,7 @@
         	$jwt = JWT::encode($token, $key);
         	echo json_encode(
             		array(
+						"status" => http_response_code(200);
                 		"message" => "Succefull login",
                 		"jwt" => $jwt
             		)
